@@ -1,0 +1,84 @@
+package org.basicconcepts
+
+object HelloWorld {
+//  def main(args: Array[String]): Unit = {
+//    // 1. Check if a given number is positive, negative, or zero
+    def main(args :Array[String]): Unit = {
+      var num=scala.io.StdIn.readInt()
+      if (num > 0) {
+        println(num + " is positive")
+      } else if (num < 0) {
+        println(num + " is negative")
+      } else {
+        println(num + " is zero")
+      }
+    }
+
+}
+
+
+
+def findSecondMax(num1: Int, num2: Int, num3: Int, num4: Int): Int = {
+  var max1 = num1
+  var max2 = num2
+
+  if (num3 > max1) {
+    max2 = max1
+    max1 = num3
+  } else if (num3 > max2) {
+    max2 = num3
+  }
+
+  if (num4 > max1) {
+    max2 = max1
+    max1 = num4
+  } else if (num4 > max2) {
+    max2 = num4
+  }
+
+  max2
+}
+
+// Example usage
+println(findSecondMax(10, 20, 30, 40))
+
+
+
+
+// 3. Find the factorial of a given number using a while loop
+def factorial(num: Int): Int = {
+  var result = 1
+  var i = 1
+
+  while (i <= num) {
+    result *= i
+    i += 1
+  }
+
+  result
+}
+
+// Example usage
+println(factorial(5))
+
+
+
+
+// 4. Calculate the average of all numbers between n1 and n2
+def calculateAverage(n1: Int, n2: Int): Double = {
+  var sum = 0
+  var count = 0
+
+  for (i <- n1 to n2) {
+    sum += i
+    count += 1
+  }
+
+  sum.toDouble / count
+}
+
+// Example usage
+val n1 = 100
+val n2 = 300
+val average = calculateAverage(n1, n2)
+println("Average of numbers between " + n1 + " and " + n2 + ": " + average)
