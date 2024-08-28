@@ -1,0 +1,90 @@
+import scala.util.Random
+
+// 1. Check if a given number is perfect
+def isPerfect(num: Int): Boolean = {
+  val divisors = (1 until num).filter(num % _ == 0)
+  divisors.sum == num
+}
+
+// Read five random numbers and check if they are perfect
+val randomNumbers = (1 to 5).map(_ => Random.nextInt(100))
+
+randomNumbers.foreach { num =>
+  if (isPerfect(num)) {
+    println(num + " is a perfect number.")
+  } else {
+    println(num + " is not a perfect number.")
+  }
+}
+
+// 2. Calculate the sum of prime numbers between 1 and 100
+def isPrime(num: Int): Boolean = {
+  if (num <= 1) return false
+  if (num <= 3) return true
+  if (num % 2 == 0 || num % 3 == 0) return false
+  var i = 5
+  while (i * i <= num) {
+    if (num % i == 0 || num % (i + 2) == 0) return false
+    i += 6
+  }
+  true
+}
+
+val primeSum = (1 to 100).filter(isPrime).sum
+println("Sum of prime numbers between 1 and 100: " + primeSum)
+
+// 3. Convert an integer to binary and octal
+def convertToBinary(num: Int): String = {
+  if (num == 0) {
+    "0"
+  } else {
+    convertToBinary(num / 2) + (num % 2).toString
+  }
+}
+
+def convertToOctal(num: Int): String = {
+  if (num == 0) {
+    "0"
+  } else {
+    convertToOctal(num / 8) + (num % 8).toString
+  }
+}
+
+def readInteger(): Int = {
+  println("Enter an integer:")
+  scala.io.StdIn.readInt()
+}
+
+val integer = readInteger()
+val binary = convertToBinary(integer)
+val octal = convertToOctal(integer)
+println("Binary representation: " + binary)
+println("Octal representation: " + octal)
+
+// 4. Print the Fibonacci series up to a given number
+def fibonacci(n: Int): Seq[Int] = {
+  if (n <= 0) {
+    Seq()
+  } else if (n == 1) {
+    Seq(0)
+  } else if (n == 2) {
+    Seq(0, 1)
+  } else {
+    fibonacci(n - 1) :+ (fibonacci(n - 1).last + fibonacci(n - 2).last)
+  }
+}
+
+def readPositiveInteger(): Int = {
+  println("Enter a positive integer:")
+  val input = scala.io.StdIn.readInt()
+  if (input <= 0) {
+    println("Please enter a positive integer.")
+    readPositiveInteger()
+  } else {
+    input
+  }
+}
+
+val limit = readPositiveInteger()
+val fibonacciSeries = fibonacci(limit)
+println("Fibonacci series up to " + limit + ": " + fibonacciSeries.mkString(", "))
