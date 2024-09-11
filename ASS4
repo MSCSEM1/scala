@@ -1,0 +1,83 @@
+A4 Q1
+
+
+object StringRotation {
+  def checkForRotation(str1: String, str2: String): Boolean = {
+    (str1.length == str2.length) && ((str1 + str1).indexOf(str2) != -1)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val str1 = "ABACD"
+    val str2 = "CDABA"
+    println(s"The given strings are: $str1 and $str2")
+    if (checkForRotation(str1, str2)) {
+      println("Strings are rotations of each other")
+    } else {
+      println("Strings are not rotations of each other")
+    }
+  }
+}
+
+
+
+
+Q2
+
+import scala.io.StdIn.readLine
+
+object ArrayStringSearch {
+  def main(args: Array[String]): Unit = {
+    val array = Array("apple", "banana", "grape", "orange", "pineapple")
+    println("Enter a string to search:")
+    val searchString = readLine()
+    val result = array.filter(_.contains(searchString))
+    println(s"Elements containing '$searchString': ${result.mkString(", ")}")
+  }
+}
+
+
+
+
+Q3
+
+
+object ReverseWords {
+  def reverseWordsInString(str: String): String = {
+    str.split(" ").map(_.reverse).mkString(" ")
+  }
+
+  def main(args: Array[String]): Unit = {
+    val str = "This is a test string"
+    println(s"The given string is: $str")
+    println(s"The new string after reversing the words: ${reverseWordsInString(str)}")
+  }
+}
+
+
+Q4
+
+
+
+object AppendStrings {
+  def appendAndAdjust(str1: String, str2: String): String = {
+    if (str1.length == str2.length) {
+      str1 + str2
+    } else if (str1.length > str2.length) {
+      str1.substring(str1.length - str2.length) + str2
+    } else {
+      str1 + str2.substring(str2.length - str1.length)
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    val str1 = "Welcome"
+    val str2 = "home"
+    println(s"The given strings are: $str1 and $str2")
+    println(s"The new string is: ${appendAndAdjust(str1, str2)}")
+  }
+}
+
+
+
+
+
